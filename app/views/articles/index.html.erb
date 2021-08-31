@@ -8,9 +8,11 @@ blockchains. <code>#allblockchainsarebeautiful</code></p>
 <h3>Browse the Repository of Articles</h3>
 <ul>
   <% @articles.each do |article| %>
-    <li>
-        <%= link_to article.title, article %>
-    </li>
+    <% unless article.archived? %>
+      <li>
+          <%= link_to article.title, article %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
