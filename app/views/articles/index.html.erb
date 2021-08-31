@@ -1,7 +1,11 @@
-<h1>Hello, Ethereum Index!</h1>
-<p>I'm running on Index Rails!</p>
+<h1>The Tinley State Developer</h1>
+<p>Tinley is a friendly crypto-community for developers and researchers
+of blockchain technologies, maintainers of distributed infrastructure,
+creators of decentralized applications and its users. We do not believe
+in maximalism and welcome constructive discourse on various different
+blockchains. <code>#allblockchainsarebeautiful</code></p>
 
-<h3>Articles</h3>
+<h3>Browse the Repository of Articles</h3>
 <ul>
   <% @articles.each do |article| %>
     <li>
@@ -9,3 +13,7 @@
     </li>
   <% end %>
 </ul>
+
+<p>
+  <%= link_to "Write a new Article", new_article_path %>
+</p>
