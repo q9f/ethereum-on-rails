@@ -5,10 +5,10 @@ creators of decentralized applications and its users. We do not believe
 in maximalism and welcome constructive discourse on various different
 blockchains. <code>#allblockchainsarebeautiful</code></p>
 
-<h3>Browse the Repository of Articles</h3>
+<h3>Browse the Repository of <%= Article.public_count %> Articles</h3>
 <ul>
   <% @articles.each do |article| %>
-    <% unless article.archived? %>
+    <% unless article.archived? or article.private? %>
       <li>
           <%= link_to article.title, article %>
       </li>

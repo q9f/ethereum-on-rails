@@ -10,6 +10,11 @@
   </div>
 
   <div>
+    <%= form.label :status %>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
+
+  <div>
     <%= form.label :body %>
     <%= form.text_area :body %>
     <% article.errors.full_messages_for(:body).each do |message| %>
