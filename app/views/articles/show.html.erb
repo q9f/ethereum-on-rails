@@ -1,5 +1,8 @@
 <h1><%= @article.title%></h1>
+<p><em>Date: <%= @article.created_at %></em></p>
 <p><%= @article.body %></p>
+<p><em>Last Update: <%= @article.updated_at %></em></p>
+<p><%= link_to "Modify content", edit_article_path(@article) %>
 
 <p>
   <%= link_to "Go back to the index", root_path %>
