@@ -13,15 +13,16 @@ _@TODO: Description_
 * Ruby, Gems, Rails, SQLite3, Bundler, NodeJS, NPM, Yarn
 
 ```bash
-pacman -S ruby sqlite nvm
+pacman -S ruby rubygems sqlite nvm
 nvm install stable
 npm install --global npm yarn
-gem install rails
+gem install bundler rails
 ```
 
-### How to run test server
+### Run dev server
 
 ```bash
+nvm use stable
 bundle install
-rails server
+bin/rails server
 ```
