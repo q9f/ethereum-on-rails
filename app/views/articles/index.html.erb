@@ -1,2 +1,11 @@
 <h1>Hello, Ethereum!</h1>
 <p>I'm running on Rails!</p>
+
+<h3>Articles</h3>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= article.title %>
+    </li>
+  <% end %>
+</ul>
