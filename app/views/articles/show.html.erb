@@ -10,6 +10,31 @@
         data: { confirm: "Arrr Uuu Sshhuuure?" } %>
 </p>
 
+<h2>Comments</h2>
+
+<ul>
+  <% @article.comments.each do |comment| %>
+    <li>
+      (<%= comment.commenter %>) <%= comment.body %>
+    </li>
+  <% end %>
+</ul>
+
+<p><strong>Challenge the author:</strong></p>
+<%= form_with model: [@article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label "Name" %>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label "Comment" %>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit "Fiiiiight!" %>
+  </p>
+<% end %>
+
 <p>
   <%= link_to "Go back to the Index", root_path %>
 </p>
