@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  http_basic_authenticate_with name: "bob", password: "alice1993", only: [:spam, :destroy]
+
   def show
     @article = Article.find(params[:article_id])
     redirect_to article_path(@article)
@@ -16,7 +19,6 @@ class CommentsController < ApplicationController
     @comment.update(status: 'spam')
     redirect_to article_path(@article)
   end
-
 
   def destroy
     @article = Article.find(params[:article_id])
