@@ -5,6 +5,10 @@ creators of decentralized applications and its users. We do not believe
 in maximalism and welcome constructive discourse on various different
 blockchains. <code>#allblockchainsarebeautiful</code></p>
 
+<%= button_to "Do Github Magic", github_login_path, method: :post %>
+
+<%= button_to "Do Ethereum Magic (soon, tm)", root_path, :disabled => true %>
+
 <h3>Browse the Repository of <%= Article.public_count %> Articles</h3>
 <ul>
   <% @articles.each do |article| %>
