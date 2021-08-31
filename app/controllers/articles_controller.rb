@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  # this is not an actual secret ;)
+  # @TODO: @q9f replace with omniauth/omniauth
   http_basic_authenticate_with name: "bob", password: "alice1993", except: [:index, :show]
 
   def index
