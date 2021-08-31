@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+_@TODO: Description_
 
-Things you may want to cover:
+### Required versions
 
-* Ruby version
+* Ruby `^3.0.0`
+* Rails `^6.1.0`
+* Node `^16.8.0`
 
-* System dependencies
+### System dependencies
 
-* Configuration
+* Ruby, Gems, Rails, SQLite3, Bundler, NodeJS, NPM, Yarn
 
-* Database creation
+```bash
+pacman -S ruby sqlite nvm
+nvm install stable
+npm install --global npm yarn
+gem install rails
+```
 
-* Database initialization
+### How to run test server
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bundle install
+rails server
+```
