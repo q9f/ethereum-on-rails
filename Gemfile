@@ -31,6 +31,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # We may be able to remove this when a future version of bundler comes out.
+  # See https://github.com/bundler/bundler/issues/6929#issuecomment-459151506 and
+  # https://github.com/bundler/bundler/pull/6963 for more information.
+  gem 'irb', require: false
 end
 
 group :development do

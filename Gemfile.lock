@@ -84,6 +84,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    io-console (0.5.7)
+    irb (1.3.7)
+      reline (>= 0.2.7)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.7.0)
@@ -144,6 +147,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    reline (0.2.7)
+      io-console (~> 0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -203,6 +208,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  irb
   jbuilder (~> 2.7)
   listen (~> 3.3)
   puma (~> 5.0)
