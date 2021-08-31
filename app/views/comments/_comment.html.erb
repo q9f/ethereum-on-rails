@@ -1,3 +1,16 @@
+<% unless comment.spam? or comment.private? or comment.archived? %>
+
 <li>
-  (<%= comment.commenter %>) <%= comment.body %>
+  (<%= comment.commenter %>)
+    <%= comment.body %>
+  (<%= link_to "Spam?",
+      [comment.article, comment],
+      mehtod: :spam,
+      data: { confirm: "OH, REALLY? SPAM???" } %>,
+    <%= link_to "Destroy!",
+      [comment.article, comment],
+      mehtod: :delete,
+      data: { confirm: "OH, REALLY? DESTROY???" } %>)
 </li>
+
+<% end %>
