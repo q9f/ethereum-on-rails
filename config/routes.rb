@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root "articles#index"
 
   # omniauth github authentication routes
-  get "/auth/github", as: "github_login"
-  get "/auth/:provider/callback", to: "sessions#update"
+  # @TODO: @q9f integrate omniauth
+  #get "/auth/github", as: "github_login"
+  #get "/auth/:provider/callback", to: "sessions#update"
 
   # users and sessions routes
-  resources :users
-  resources :sessions
+  resources :users, only: [:new, :create]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
 
   # articles and comments (nested) routes
   resources :articles do
