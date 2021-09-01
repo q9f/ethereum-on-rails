@@ -5,9 +5,16 @@ creators of decentralized applications and its users. We do not believe
 in maximalism and welcome constructive discourse on various different
 blockchains. <code>#allblockchainsarebeautiful</code></p>
 
+<!-- @TODO: @q9f Github OmniAuth -->
 <!-- %= button_to "Do Github Magic", github_login_path, method: :post % -->
-
 <!-- %= button_to "Do Ethereum Magic (soon, tm)", root_path, :disabled => true % -->
+
+<% if logged_in? %>
+  <p>Welcome back, <%= current_user.name %>! Good to see you!</p>
+<% else %>
+  <p>Hello! Do you wish to {<%= link_to "Login", login_path, method: :get %>,
+  <%= link_to "Sign Up", new_user_path, method: :get %>}? </p>
+<% end %>
 
 <h3>Browse the Repository of <%= Article.public_count %> Articles</h3>
 <ul>

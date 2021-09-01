@@ -1,2 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Sign up for the Tinely Developer</h1>
+
+<p>
+  <%= form_for @user do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label "Password" %>
+    <%= form.password_field :digest %>
+    <%= form.submit "Let's goooo!!" %>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "No thanks, let's go back...", root_path %>
+</p>
