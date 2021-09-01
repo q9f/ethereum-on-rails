@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/login'
+  get 'sessions/welcome'
+  get 'users/new'
+  get 'users/create'
   root "articles#index"
 
   get "/auth/github", as: "github_login"
@@ -7,5 +13,4 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
-
 end
