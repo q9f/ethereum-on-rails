@@ -64,3 +64,5 @@ gem "omniauth", "~> 2.0"
 gem "omniauth-github", "~> 2.0"
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "bcrypt", "~> 3.1"
