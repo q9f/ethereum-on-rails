@@ -1,15 +1,18 @@
-<h1>Login to the Tinely Developer</h1>
-
-<p>
-  <%= form_tag '/login' do %>
-    <%= label_tag "Name" %>
-    <%= text_field_tag :username %>
-    <%= label_tag "Password" %>
-    <%= password_field_tag :password_digest %>
-    <%= submit_tag "Let's goooo!!" %>
-  <% end %>
-</p>
-
-<p>
-  <%= link_to "No thanks, let's go back...", root_path %>
-</p>
+<% if !logged_in? %>
+  <h1>Login to the Tinely Developer</h1>
+  <p>
+    <%= form_tag '/login' do %>
+      <%= label_tag "Name" %>
+      <%= text_field_tag :username %>
+      <%= label_tag "Password" %>
+      <%= password_field_tag :password_digest %>
+      <%= submit_tag "Let's goooo!!" %>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to "No thanks, let's go back...", root_path %>
+    (Or <%= link_to "Sign Up", new_user_path, method: :get %>?)
+  </p>
+<% else %>
+  <% redirect_to root_path %>
+<% end %>

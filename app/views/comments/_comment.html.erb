@@ -1,8 +1,8 @@
 <% unless comment.spam? or comment.private? or comment.archived? %>
-
 <li>
-  (<%= comment.commenter %>)
+  (<%= Users.find(comment[:user_id]).username %>)
     <%= comment.body %>
+  <% if logged_in? %>
   (<%= link_to "Spam?",
       [comment.article, comment],
       mehtod: :spam,
@@ -11,6 +11,6 @@
       [comment.article, comment],
       mehtod: :delete,
       data: { confirm: "OH, REALLY? DESTROY???" } %>)
+  <% end %>
 </li>
-
 <% end %>

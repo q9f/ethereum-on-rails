@@ -4,18 +4,13 @@ of blockchain technologies, maintainers of distributed infrastructure,
 creators of decentralized applications and its users. We do not believe
 in maximalism and welcome constructive discourse on various different
 blockchains. <code>#allblockchainsarebeautiful</code></p>
-
-<!-- @TODO: @q9f Github OmniAuth -->
-<!-- %= button_to "Do Github Magic", github_login_path, method: :post % -->
-<!-- %= button_to "Do Ethereum Magic (soon, tm)", root_path, :disabled => true % -->
-
 <% if logged_in? %>
-  <p>Welcome back, <%= current_user.username %>! Good to see you!</p>
+  <p>Welcome back, <%= current_user.username %>! Good to see you! (<%= link_to "Logout", logout_path, method: :get %>?)</p>
 <% else %>
   <p>Hello! Do you wish to {<%= link_to "Login", login_path, method: :get %>,
   <%= link_to "Sign Up", new_user_path, method: :get %>}? </p>
 <% end %>
-
+<% if Article.public_count > 0 %>
 <h3>Browse the Repository of <%= Article.public_count %> Articles</h3>
 <ul>
   <% @articles.each do |article| %>
@@ -26,7 +21,9 @@ blockchains. <code>#allblockchainsarebeautiful</code></p>
     <% end %>
   <% end %>
 </ul>
-
+<% end %>
+<% if logged_in? %>
 <p>
   <%= link_to "Write a new Article", new_article_path %>
 </p>
+<% end %>

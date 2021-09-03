@@ -3,21 +3,24 @@
 <p><%= @article.body %></p>
 <p><em>Last Update: <%= @article.updated_at %></em></p>
 <p>
+<% if logged_in? %>
   <%= link_to "Modify Content", edit_article_path(@article) %>
   | <%= link_to "Activate Doomsday Device",
         article_path(@article),
         method: :delete,
         data: { confirm: "Arrr Uuu Sshhuuure?" } %>
+<% end %>
 </p>
-
+<% if Comments.public_count > 0 %>
 <h2>Comments</h2>
 <ul>
   <%= render @article.comments %>
 </ul>
-
-<p><strong>Challenge the author:</strong></p>
-<%= render "comments/form" %>
-
+<% end %>
+<% if logged_in? %>
+  <p><strong>Challenge the author:</strong></p>
+  <%= render "comments/form" %>
+<% end %>
 <p>
   <%= link_to "Go back to the Index", root_path %>
 </p>
