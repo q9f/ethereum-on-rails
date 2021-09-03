@@ -2,10 +2,10 @@
 
 <p>
   <%= form_for @user do |form| %>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label "Name" %>
+    <%= form.text_field :username %>
     <%= form.label "Password" %>
-    <%= form.password_field :digest %>
+    <%= form.password_field :password_digest %>
     <%= form.submit "Let's goooo!!" %>
   <% end %>
 </p>

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   # make the helper methods available in our views
-  helper_method :curren_user
+  helper_method :current_user
   helper_method :logged_in?
 
   # handle current user information

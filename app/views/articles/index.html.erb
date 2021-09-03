@@ -10,7 +10,7 @@ blockchains. <code>#allblockchainsarebeautiful</code></p>
 <!-- %= button_to "Do Ethereum Magic (soon, tm)", root_path, :disabled => true % -->
 
 <% if logged_in? %>
-  <p>Welcome back, <%= current_user.name %>! Good to see you!</p>
+  <p>Welcome back, <%= current_user.username %>! Good to see you!</p>
 <% else %>
   <p>Hello! Do you wish to {<%= link_to "Login", login_path, method: :get %>,
   <%= link_to "Sign Up", new_user_path, method: :get %>}? </p>

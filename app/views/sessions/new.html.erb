@@ -2,10 +2,10 @@
 
 <p>
   <%= form_tag '/login' do %>
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= label_tag "Name" %>
+    <%= text_field_tag :username %>
     <%= label_tag "Password" %>
-    <%= password_field_tag :digest %>
+    <%= password_field_tag :password_digest %>
     <%= submit_tag "Let's goooo!!" %>
   <% end %>
 </p>

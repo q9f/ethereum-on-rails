@@ -3,6 +3,6 @@ class User < ApplicationRecord
   has_secure_password
 
   # user requires name and password (digest)
-  validates :name, presence: true
-  validates :digest, presence: true
+  validates :username, presence: true
+  validates :password_digest, presence: true
 end
