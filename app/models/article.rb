@@ -5,6 +5,9 @@ class Article < ApplicationRecord
   # article can have many comments
   has_many :comments, dependent: :destroy
 
+  # articles belong to users
+  belongs_to :user
+
   # title is required
   validates :title, presence: true
 

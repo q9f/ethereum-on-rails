@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
 
-  # this is not an actual secret ;)
-  # @TODO: @q9f replace with omniauth/omniauth
-  http_basic_authenticate_with name: "bob", password: "alice1993", only: [:spam, :destroy]
-
   # generic redirect to article of comment with :article_id parent
   def show
     @article = Article.find(params[:article_id])

@@ -4,4 +4,7 @@ class Comment < ApplicationRecord
 
   # requires article dependency
   belongs_to :article
+
+  # comments belong to users
+  belongs_to :user
 end
