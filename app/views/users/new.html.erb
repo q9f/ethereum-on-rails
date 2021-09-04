@@ -5,14 +5,14 @@
       <%= form.label "Name" %>
       <%= form.text_field :username %>
       <%= form.label "Password" %>
-      <%= form.password_field :password_digest %>
-      <%= form.submit "Let's goooo!!" %>
+      <%= form.password_field :password %>
+      <%= form.submit "Sign Up" %>
     <% end %>
   </p>
   <p>
-    <%= link_to "No thanks, let's go back...", root_path %>
-    (Or <%= link_to "Login Instead", login_path, method: :get %>!)
+    <%= link_to "Back", root_path %> |
+    <%= link_to "Login", login_path, method: :get %>
   </p>
 <% else %>
-  <% redirect_to root_path %>
+  <p> How did you get here? <%= link_to "Back", root_path %>
 <% end %>

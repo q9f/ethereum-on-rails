@@ -1,9 +1,0 @@
-<% if logged_in? %>
-  <h1>Be creative, descriptive, informative, and friendly</h1>
-  <%= render "form", article: @article %>
-  <p>
-    <%= link_to "Go back to the index", root_path %>
-  </p>
-<% else %>
-  <% redirect_to login_path %>
-<% end %>

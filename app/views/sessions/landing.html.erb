@@ -1,0 +1,10 @@
+<h1>The Tinley Developer</h1>
+<p>Tinley is a friendly crypto-community for developers and foo bar ...</p>
+<% if logged_in? %>
+  <p>Welcome back, <%= current_user.username %>! Good to see you! <%= link_to "Logout", logout_path, method: :get %></p>
+  <pre> <%= debug current_user %> </pre>
+<% else %>
+  <p>Hello! Do you wish to {<%= link_to "Login", login_path, method: :get %>,
+  <%= link_to "Sign Up", new_user_path, method: :get %>}? </p>
+<% end %>
+<pre> <%= debug session.to_h %> </pre>
