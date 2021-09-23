@@ -1,6 +1,11 @@
 # README
 
-_@TODO: Description_
+Ethereum on Rails MVP:
+* User model with `:eth_address` and `:eth_nonce`
+* Create account with `:eth_address` requested from Ethereum wallet (MetaMask)
+* Sign in to existing account by signing `:eth_nonce` with `:eth_address` in an Ethereum wallet
+* ...
+* _Profit!_
 
 ### Required versions
 
