@@ -9,7 +9,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
+    <p class="notice" style="color:DodgerBlue"><%= notice %></p>
+    <p class="alert" style="color:Tomato"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

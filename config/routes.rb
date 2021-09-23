@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  # default to sessions/landing
-  root 'sessions#landing'
 
-  # user routes
-  resources :users, only: [:new, :create]
+  # ethereum authentication demo
+  root 'pages#demo'
 
-  # session routes
+  # authentication logic routes
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  post 'logout', to: 'sessions#destroy'
   get 'logout', to: 'sessions#destroy'
 end

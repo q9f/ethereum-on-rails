@@ -1,18 +1,28 @@
-<% if !logged_in? %>
-  <h1>Login to the Tinely Developer</h1>
-  <p>
+<h1>Ethereum Log-In</h1>
+
+<p>
+  <% if !logged_in? %>
+    <button class="eth_connect">Connect Ethereum Wallet</button>
     <%= form_tag '/login' do %>
-      <%= label_tag "Name" %>
-      <%= text_field_tag :username %>
-      <%= label_tag "Password" %>
-      <%= password_field_tag :password %>
-      <%= submit_tag "Login" %>
+      <%= label_tag "Nonce" %>
+      <%= text_field_tag :eth_nonce, "", size: 42, readonly: true, class: "eth_nonce" %> <br />
+      <%= label_tag "Address" %>
+      <%= text_field_tag :eth_address, "", size: 42, readonly: true, class: "eth_address" %> <br />
+      <%= label_tag "Signature" %>
+      <%= text_field_tag :signature, "", size: 42, readonly: true, class: "eth_signature" %> <br />
+      <%= submit_tag "Log-in with Ethereum", class: "eth_submit" %>
     <% end %>
-  </p>
-  <p>
-    <%= link_to "Back", root_path %> |
-    <%= link_to "Sign Up", new_user_path, method: :get %>
-  </p>
-<% else %>
-  <p> How did you get here? <%= link_to "Back", root_path %>
-<% end %>
+    <br />... or
+    <%= link_to "sign up", signup_path %>
+    instead?
+  <% else %>
+    Hello
+    <code><%= current_user.eth_address %></code>!
+    Do you wish to
+    <%= link_to "log out", logout_path, method: :destroy %>
+    or
+    <%= link_to "go back", root_path %>?
+  <% end %>
+</p>
+
+<%= javascript_pack_tag 'sessions_new' %>

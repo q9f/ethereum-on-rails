@@ -1,0 +1,15 @@
+<h1>Ethereum Authentication Demo</h1>
+
+<p>
+  <% if !logged_in? %>
+    Hello, do you wish to
+    <%= link_to "sign up", signup_path %>
+    or
+    <%= link_to "log in", login_path %>?
+  <% else %>
+    Hello <%= current_user.username %>
+    <code><%= current_user.eth_address %></code>;
+    welcome back! Do you wish to
+    <%= link_to "log out", logout_path, method: :destroy %>?
+  <% end %>
+</p>

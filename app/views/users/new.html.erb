@@ -1,18 +1,27 @@
-<% if !logged_in? %>
-  <h1>Sign up for the Tinely Developer</h1>
-  <p>
-    <%= form_for @user do |form| %>
-      <%= form.label "Name" %>
-      <%= form.text_field :username %>
-      <%= form.label "Password" %>
-      <%= form.password_field :password %>
-      <%= form.submit "Sign Up" %>
+
+<h1>Ethereum Sign-Up</h1>
+
+<p>
+  <% if !logged_in? %>
+    <button class="eth_connect">Connect Ethereum Wallet</button>
+    <%= form_for @user, url: signup_path do |form| %>
+      <%= form.label "Name (optional)" %>
+      <%= form.text_field :username %> <br />
+      <%= form.label "Address" %>
+      <%= form.text_field :eth_address, size: 42, readonly: true, class: "eth_address" %> <br />
+      <%= form.submit "Sign-up with Ethereum", class: "eth_submit" %>
     <% end %>
-  </p>
-  <p>
-    <%= link_to "Back", root_path %> |
-    <%= link_to "Login", login_path, method: :get %>
-  </p>
-<% else %>
-  <p> How did you get here? <%= link_to "Back", root_path %>
-<% end %>
+    <br />... or
+    <%= link_to "log in", login_path %>
+    instead?
+  <% else %>
+    Hello
+    <code><%= current_user.eth_address %></code>!
+    Do you wish to
+    <%= link_to "log out", logout_path, method: :destroy %>
+    or
+    <%= link_to "go back", root_path %>?
+  <% end %>
+</p>
+
+<%= javascript_pack_tag 'users_new' %>
