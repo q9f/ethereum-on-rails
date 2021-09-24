@@ -7,6 +7,8 @@ Ethereum on Rails MVP:
 * ...
 * _Profit!_
 
+![Screenshot of the log-in page](./img/screenshot.png)
+
 ### Required versions
 
 * Ruby `^3.0.0`
