@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   post 'logout', to: 'sessions#destroy'
   get 'logout', to: 'sessions#destroy'
+
+  # api to fetch nonces for users
+  namespace :api do
+    namespace :v1 do
+      resources :users
+    end
+  end
 end
