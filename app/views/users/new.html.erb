@@ -13,7 +13,8 @@
     <% end %>
     <br />... or
     <%= link_to "log in", login_path %>
-    instead?
+    instead? or
+    <%= link_to "go back", root_path %>?
   <% else %>
     Hello
     <code><%= current_user.eth_address %></code>!

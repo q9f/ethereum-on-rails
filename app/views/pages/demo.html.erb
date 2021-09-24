@@ -9,7 +9,7 @@
   <% else %>
     Hello <%= current_user.username %>
     <code><%= current_user.eth_address %></code>;
-    welcome back! Do you wish to
+    welcome! Do you wish to
     <%= link_to "log out", logout_path, method: :destroy %>?
   <% end %>
 </p>

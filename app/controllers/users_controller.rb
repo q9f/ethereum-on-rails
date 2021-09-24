@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    # only allow user to control name, password, signature, and address
-    params.require(:user).permit(:username, :password, :eth_message, :eth_address, :eth_signature, )
+    # only allow user to control name, message, signature, and address
+    params.require(:user).permit(:username, :eth_message, :eth_address, :eth_signature)
   end
 end

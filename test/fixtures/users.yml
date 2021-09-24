@@ -2,12 +2,10 @@
 
 one:
   email: MyString
-  password_digest: MyString
   eth_address: MyString
   eth_nonce: MyString
 
 two:
   email: MyString
-  password_digest: MyString
   eth_address: MyString
   eth_nonce: MyString
