@@ -3,10 +3,10 @@ const buttonEthConnect = document.querySelector('button.eth_connect');
 
 // the read-only eth address field, we process that automatically
 const formInputEthAddress = document.querySelector('input.eth_address');
+formInputEthAddress.hidden = true;
 
-// disable the submit button until we have everything
-const formInputEthSubmit = document.querySelector('input.eth_submit');
-formInputEthSubmit.disabled = true;
+// get the user form for submission later
+const formNewUser = document.querySelector('form.new_user');
 
 // only proceed with ethereum context available
 if (typeof window.ethereum !== 'undefined') {
@@ -17,9 +17,9 @@ if (typeof window.ethereum !== 'undefined') {
     const accounts = await requestAccounts();
     const etherbase = accounts[0];
 
-    // populate, display, and enable form
+    // populate and submit form
     formInputEthAddress.value = etherbase;
-    formInputEthSubmit.disabled = false;
+    formNewUser.submit();
 });
 } else {
   // disable form submission in case there is no ethereum wallet available

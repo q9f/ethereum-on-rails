@@ -5,10 +5,12 @@ const buttonEthConnect = document.querySelector('button.eth_connect');
 const formInputEthMessage = document.querySelector('input.eth_message');
 const formInputEthAddress = document.querySelector('input.eth_address');
 const formInputEthSignature = document.querySelector('input.eth_signature');
+formInputEthMessage.hidden = true;
+formInputEthAddress.hidden = true;
+formInputEthSignature.hidden = true;
 
-// disable the submit button until we have everything
-const formInputEthSubmit = document.querySelector('input.eth_submit');
-formInputEthSubmit.disabled = true;
+// get the new session form for submission later
+const formNewSession = document.querySelector('form.new_session');
 
 // only proceed with ethereum context available
 if (typeof window.ethereum !== 'undefined') {
@@ -18,19 +20,19 @@ if (typeof window.ethereum !== 'undefined') {
     // request accounts from ethereum provider
     const accounts = await requestAccounts();
     const etherbase = accounts[0];
-    formInputEthAddress.value = etherbase;
 
-    // sign a message with current time and random uuid nonce
+    // sign a message with current time and nonce from database
     const nonce = await getUuidByAccount(etherbase);
     if (nonce) {
       const requestTime = new Date().getTime();
       const message = requestTime + "," + nonce;
-      formInputEthMessage.value = message;
       const signature = await personalSign(etherbase, message);
 
-      // populate, display, and enable form
+      // populate and submit form
+      formInputEthMessage.value = message;
+      formInputEthAddress.value = etherbase;
       formInputEthSignature.value = signature;
-      formInputEthSubmit.disabled = false;
+      formNewSession.submit();
     } else {
 
       // should have some error handling here

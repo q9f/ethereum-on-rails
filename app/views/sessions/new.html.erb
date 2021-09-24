@@ -2,30 +2,24 @@
 <p>
   <em>
     Connect to an Ethereum wallet, retrieve the user's account,
-    generate a message containing the request time and a random nonce, and let
-    users sign this message with the Ethereum account they control. If the
-    signature is not expired and matches the Ethereum address in the database,
-    assume the user cryptographically authenticated.
+    generate a message containing the request time and the user's specific
+    nonce, and let them sign this message with the Ethereum account they
+    control. If the signature is not expired and matches the Ethereum address
+    and nonce in the database, assume the user cryptographically authenticated.
   </em>
 </p>
 <p>
   <% if !logged_in? %>
-    <button class="eth_connect">Connect Ethereum Wallet</button>
-    <%= form_tag '/login' do %>
-      <%= label_tag "Message" %>
-      <%= text_field_tag :eth_message, "", size: 42, readonly: true, class: "eth_message" %> <br />
-      <%= label_tag "Address" %>
-      <%= text_field_tag :eth_address, "", size: 42, readonly: true, class: "eth_address" %> <br />
-      <%= label_tag "Signature" %>
-      <%= text_field_tag :eth_signature, "", size: 42, readonly: true, class: "eth_signature" %> <br />
-      <%= submit_tag "Log-in with Ethereum", class: "eth_submit" %>
+    <%= form_tag '/login', class: "new_session" do %>
+      <%= text_field_tag :eth_message, "", readonly: true, class: "eth_message" %> <br />
+      <%= text_field_tag :eth_address, "", readonly: true, class: "eth_address" %> <br />
+      <%= text_field_tag :eth_signature, "", readonly: true, class: "eth_signature" %> <br />
     <% end %>
-    <br />... or
+    <button class="eth_connect">Log-in with Ethereum</button>
+    <br /><br />... or
     <%= link_to "sign up", signup_path %>
     instead? or
     <%= link_to "go back", root_path %>?
-    <hr />
-    <%= debug session.to_h %>
   <% else %>
     Hello
     <code><%= current_user.eth_address %></code>!
@@ -33,9 +27,6 @@
     <%= link_to "log out", logout_path, method: :destroy %>
     or
     <%= link_to "go back", root_path %>?
-    <hr />
-    <%= debug current_user %>
-    <%= debug session.to_h %>
   <% end %>
 </p>
 

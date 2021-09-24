@@ -9,20 +9,16 @@
 </p>
 <p>
   <% if !logged_in? %>
-    <button class="eth_connect">Connect Ethereum Wallet</button>
     <%= form_for @user, url: signup_path do |form| %>
-      <%= form.label "Name (optional)" %>
+      <%= form.label "Name" %>
       <%= form.text_field :username %> <br />
-      <%= form.label "Address" %>
-      <%= form.text_field :eth_address, size: 42, readonly: true, class: "eth_address" %> <br />
-      <%= form.submit "Sign-up with Ethereum", class: "eth_submit" %>
+      <%= form.text_field :eth_address, readonly: true, class: "eth_address" %> <br />
     <% end %>
-    <br />... or
+    <button class="eth_connect">Sign-up with Ethereum</button>
+    <br /><br />... or
     <%= link_to "log in", login_path %>
     instead? or
     <%= link_to "go back", root_path %>?
-    <hr />
-    <%= debug session.to_h %>
   <% else %>
     Hello
     <code><%= current_user.eth_address %></code>!
@@ -30,9 +26,6 @@
     <%= link_to "log out", logout_path, method: :destroy %>
     or
     <%= link_to "go back", root_path %>?
-    <hr />
-    <%= debug current_user %>
-    <%= debug session.to_h %>
   <% end %>
 </p>
 

@@ -11,15 +11,10 @@
     <%= link_to "sign up", signup_path %>
     or
     <%= link_to "log in", login_path %>?
-    <hr />
-    <%= debug session.to_h %>
   <% else %>
     Hello <%= current_user.username %>
     <code><%= current_user.eth_address %></code>;
     welcome! Do you wish to
     <%= link_to "log out", logout_path, method: :destroy %>?
-    <hr />
-    <%= debug current_user %>
-    <%= debug session.to_h %>
   <% end %>
 </p>
