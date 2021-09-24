@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
         # we embedded the time of the request in the signed message and make sure
         # it's not older than 5 minutes. expired signatures will be rejected.
-        request_time, signed_nonce = message.split(',')
+        custom_title, request_time, signed_nonce = message.split(',')
         request_time = Time.at(request_time.to_f / 1000.0)
         expiry_time = request_time + 300
 

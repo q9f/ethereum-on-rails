@@ -24,8 +24,9 @@ if (typeof window.ethereum !== 'undefined') {
     // sign a message with current time and nonce from database
     const nonce = await getUuidByAccount(etherbase);
     if (nonce) {
+      const customTitle = "Ethereum on Rails";
       const requestTime = new Date().getTime();
-      const message = requestTime + "," + nonce;
+      const message = customTitle + "," + requestTime + "," + nonce;
       const signature = await personalSign(etherbase, message);
 
       // populate and submit form
