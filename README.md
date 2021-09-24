@@ -29,5 +29,6 @@ gem install bundler rails
 ```bash
 nvm use stable
 bundle install
+bin/rails webpacker:install
 bin/rails server
 ```

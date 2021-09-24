@@ -4,12 +4,12 @@
   <% if !logged_in? %>
     <button class="eth_connect">Connect Ethereum Wallet</button>
     <%= form_tag '/login' do %>
-      <%= label_tag "Nonce" %>
-      <%= text_field_tag :eth_nonce, "", size: 42, readonly: true, class: "eth_nonce" %> <br />
+      <%= label_tag "Message" %>
+      <%= text_field_tag :eth_message, "", size: 42, readonly: true, class: "eth_message" %> <br />
       <%= label_tag "Address" %>
       <%= text_field_tag :eth_address, "", size: 42, readonly: true, class: "eth_address" %> <br />
       <%= label_tag "Signature" %>
-      <%= text_field_tag :signature, "", size: 42, readonly: true, class: "eth_signature" %> <br />
+      <%= text_field_tag :eth_signature, "", size: 42, readonly: true, class: "eth_signature" %> <br />
       <%= submit_tag "Log-in with Ethereum", class: "eth_submit" %>
     <% end %>
     <br />... or

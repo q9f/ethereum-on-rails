@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     # usually, we want to let the user sign the nonce to make sure
     # they are authorized to create a new user account for the
-    # given 4thereum address. for the demo, we skip this for the
+    # given ethereum address. for the demo, we skip this for the
     # sake of keeping it simple.
 
     # only proceed with eth address
@@ -36,9 +36,8 @@ class UsersController < ApplicationController
           redirect_to root_path, notice: 'Successfully created account.'
         else
 
-          # if it fails, eth address is already in database, stay on signup
-          flash.now[:alert] = "Account already exists! Try to log in instead!"
-          render :new
+          # if it fails, eth address is already in database, go to login
+          redirect_to login_path, alert: "Account already exists! Try to log in instead!"
         end
       else
 
@@ -57,6 +56,6 @@ class UsersController < ApplicationController
   private
   def user_params
     # only allow user to control name, password, signature, and address
-    params.require(:user).permit(:username, :password, :signature, :eth_nonce, :eth_address)
+    params.require(:user).permit(:username, :password, :eth_message, :eth_address, :eth_signature, )
   end
 end

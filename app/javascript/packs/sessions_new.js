@@ -2,7 +2,7 @@
 const buttonEthConnect = document.querySelector('button.eth_connect');
 
 // the read-only eth fields, we process them automatically
-const formInputEthNonce = document.querySelector('input.eth_nonce');
+const formInputEthMessage = document.querySelector('input.eth_message');
 const formInputEthAddress = document.querySelector('input.eth_address');
 const formInputEthSignature = document.querySelector('input.eth_signature');
 
@@ -20,10 +20,10 @@ if (typeof window.ethereum !== 'undefined') {
     const etherbase = accounts[0];
     formInputEthAddress.value = etherbase;
 
-    // sign a random uuid nonce
-    const nonce = generate_uuid_v4();
-    formInputEthNonce.value = nonce;
-    const signature = await personal_sign(etherbase, nonce);
+    // sign a message with current time and random uuid nonce
+    const message = new Date().getTime() + "," + generate_uuid_v4();
+    formInputEthMessage.value = message;
+    const signature = await personal_sign(etherbase, message);
 
     // populate, display, and enable form
     formInputEthSignature.value = signature;
