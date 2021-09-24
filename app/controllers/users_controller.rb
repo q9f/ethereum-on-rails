@@ -31,9 +31,8 @@ class UsersController < ApplicationController
         # save to database
         if @user.save
 
-          # create user session and send them back to home
-          session[:user_id] = @user.id
-          redirect_to root_path, notice: 'Successfully created account.'
+          # if user is created, congratulations, send them to login
+          redirect_to login_path, notice: 'Successfully created an account, you may now log in.'
         else
 
           # if it fails, eth address is already in database, go to login
