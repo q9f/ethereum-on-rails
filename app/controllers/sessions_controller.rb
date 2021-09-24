@@ -22,21 +22,13 @@ class SessionsController < ApplicationController
         message = params[:eth_message]
         signature = params[:eth_signature]
 
-        # note, we use the user address from our database, not from the form
+        # note, we use the user address and nonce from our database, not from the form
         user_address = user.eth_address
+        user_nonce = user.eth_nonce
 
-        # in future, to enhance security, the nonce should be persisted in
-        # the database to avoid signature spoofing. instead of signing a
-        # random nonce, make the user sign a specific nonce on log-in.
-        # regenerate a new random nonce in the database only upon
-        # successful log-in. currently, if someone is able to intercept
-        # the nonce and the signature, they would be able to reuse them.
-        #
-        # for now:
-        # to significantly reduce probability of signature spoofing, we embed
-        # the time of the request in the signed message and make sure it's
-        # not older than 5 minutes. expired signatures will be rejected.
-        request_time, eth_nonce = message.split(',')
+        # we embedded the time of the request in the signed message and make sure
+        # it's not older than 5 minutes. expired signatures will be rejected.
+        request_time, signed_nonce = message.split(',')
         request_time = Time.at(request_time.to_f / 1000.0)
         expiry_time = request_time + 300
 
@@ -45,27 +37,37 @@ class SessionsController < ApplicationController
         sane_checkpoint = Time.parse "2021-01-01 00:00:00 UTC"
         if request_time and request_time > sane_checkpoint and request_time < expiry_time
 
+          # enforce that the signed nonce is the one we have on record
+          if signed_nonce.eql? user_nonce
+
           # recover address from signature
           signature_pubkey = Eth::Key.personal_recover message, signature
           signature_address = Eth::Utils.public_key_to_address signature_pubkey
 
-          # if the recovered address matches the user address on record, proceed
-          if user_address.downcase.eql? signature_address.downcase
+            # if the recovered address matches the user address on record, proceed
+            # (uses downcase to ignore checksum mismatch)
+            if user_address.downcase.eql? signature_address.downcase
 
-            # if this is true, the user is cryptographically authenticated!
-            session[:user_id] = user.id
+              # if this is true, the user is cryptographically authenticated!
+              session[:user_id] = user.id
 
-            # rotate the random nonce to prevent signature spoofing
-            # (unimplemented: we do not use this, yet, but let's update it anyways)
-            user.eth_nonce = SecureRandom.uuid
-            user.save
+              # rotate the random nonce to prevent signature spoofing
+              # (unimplemented: we do not use this, yet, but let's update it anyways)
+              user.eth_nonce = SecureRandom.uuid
+              user.save
 
-            # send the logged in user back home
-            redirect_to root_path, notice: "Logged in successfully!"
+              # send the logged in user back home
+              redirect_to root_path, notice: "Logged in successfully!"
+            else
+
+              # signature address does not match our records
+              flash.now[:alert] = "Signature verification failed!"
+              render :new
+            end
           else
 
-            # signature address does not match our records
-            flash.now[:alert] = "Signature verification failed!"
+            # signed nonce mismatches with the nonce on record
+            flash.now[:alert] = "Signed nonce does not match!"
             render :new
           end
         else

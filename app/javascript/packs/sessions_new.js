@@ -21,14 +21,22 @@ if (typeof window.ethereum !== 'undefined') {
     formInputEthAddress.value = etherbase;
 
     // sign a message with current time and random uuid nonce
-    const message = new Date().getTime() + "," + generate_uuid_v4();
-    formInputEthMessage.value = message;
-    const signature = await personal_sign(etherbase, message);
+    const nonce = await getUuidByAccount(etherbase);
+    if (nonce) {
+      const requestTime = new Date().getTime();
+      const message = requestTime + "," + nonce;
+      formInputEthMessage.value = message;
+      const signature = await personalSign(etherbase, message);
 
-    // populate, display, and enable form
-    formInputEthSignature.value = signature;
-    formInputEthSubmit.disabled = false;
-});
+      // populate, display, and enable form
+      formInputEthSignature.value = signature;
+      formInputEthSubmit.disabled = false;
+    } else {
+
+      // should have some error handling here
+      formInputEthMessage.value = "Please sign up first!";
+    }
+  });
 } else {
   // disable form submission in case there is no ethereum wallet available
   buttonEthConnect.innerHTML = "No Ethereum Context Available";
@@ -42,14 +50,16 @@ async function requestAccounts() {
 }
 
 // request ethereum signature for message from account
-async function personal_sign(account, message) {
+async function personalSign(account, message) {
   const signature = await ethereum.request({ method: 'personal_sign', params: [ message, account ] });
   return signature;
 }
 
-// generate a random uuid that the user can sign
-function generate_uuid_v4() {
-  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
+// get nonce from /api/v1/users/ by account
+async function getUuidByAccount(account) {
+  const response = await fetch("/api/v1/users/" + account);
+  const nonceJson = await response.json();
+  if (!nonceJson) return null;
+  const uuid = nonceJson[0].eth_nonce;
+  return uuid;
 }
