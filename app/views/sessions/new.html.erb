@@ -1,5 +1,13 @@
 <h1>Ethereum Log-In</h1>
-
+<p>
+  <em>
+    Connect to an Ethereum wallet, retrieve the user's account,
+    generate a message containing the request time and a random nonce, and let
+    users sign this message with the Ethereum account they control. If the
+    signature is not expired and matches the Ethereum address in the database,
+    assume the user cryptographically authenticated.
+  </em>
+</p>
 <p>
   <% if !logged_in? %>
     <button class="eth_connect">Connect Ethereum Wallet</button>
@@ -16,6 +24,8 @@
     <%= link_to "sign up", signup_path %>
     instead? or
     <%= link_to "go back", root_path %>?
+    <hr />
+    <%= debug session.to_h %>
   <% else %>
     Hello
     <code><%= current_user.eth_address %></code>!
@@ -23,6 +33,9 @@
     <%= link_to "log out", logout_path, method: :destroy %>
     or
     <%= link_to "go back", root_path %>?
+    <hr />
+    <%= debug current_user %>
+    <%= debug session.to_h %>
   <% end %>
 </p>
 
