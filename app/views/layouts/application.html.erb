@@ -14,5 +14,7 @@
     <p class="notice" style="color:DodgerBlue"><%= notice %></p>
     <p class="alert" style="color:Tomato"><%= alert %></p>
     <%= yield %>
+    <%= debug current_user if logged_in? %>
+    <%= debug session.to_h %>
   </body>
 </html>

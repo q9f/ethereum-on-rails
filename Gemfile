@@ -22,7 +22,7 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use Ruby-Eth for signature recovery
-gem 'eth-patched', '>= 0.4.13'
+gem 'eth-patched', '>= 0.4.14'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
