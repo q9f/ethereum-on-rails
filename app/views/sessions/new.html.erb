@@ -10,7 +10,7 @@
 </p>
 <p>
   <% if !logged_in? %>
-    <%= form_tag '/login', class: "new_session" do %>
+    <%= form_tag "/login", class: "new_session" do %>
       <%= text_field_tag :eth_message, "", readonly: true, class: "eth_message" %> <br />
       <%= text_field_tag :eth_address, "", readonly: true, class: "eth_address" %> <br />
       <%= text_field_tag :eth_signature, "", readonly: true, class: "eth_signature" %> <br />
@@ -30,4 +30,4 @@
   <% end %>
 </p>
 
-<%= javascript_pack_tag 'sessions_new' %>
+<%= javascript_pack_tag "sessions_new" %>

@@ -1,4 +1,4 @@
-require 'eth'
+require "eth"
 
 class Api::V1::UsersController < ApiController
 
@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApiController
 
     # do not expose full user object; just the nonce
     if user and user.id > 0
-      response = [ eth_nonce: user.eth_nonce ]
+      response = [eth_nonce: user.eth_nonce]
     end
 
     # return response if found or nil in case of mismatch
