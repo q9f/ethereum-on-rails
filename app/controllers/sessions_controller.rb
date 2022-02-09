@@ -1,5 +1,5 @@
-require 'eth'
-require 'time'
+require "eth"
+require "time"
 
 class SessionsController < ApplicationController
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
         # we embedded the time of the request in the signed message and make sure
         # it's not older than 5 minutes. expired signatures will be rejected.
-        custom_title, request_time, signed_nonce = message.split(',')
+        custom_title, request_time, signed_nonce = message.split(",")
         request_time = Time.at(request_time.to_f / 1000.0)
         expiry_time = request_time + 300
 
@@ -40,9 +40,9 @@ class SessionsController < ApplicationController
           # enforce that the signed nonce is the one we have on record
           if signed_nonce.eql? user_nonce
 
-          # recover address from signature
-          signature_pubkey = Eth::Signature.personal_recover message, signature
-          signature_address = Eth::Util.public_key_to_address signature_pubkey
+            # recover address from signature
+            signature_pubkey = Eth::Signature.personal_recover message, signature
+            signature_address = Eth::Util.public_key_to_address signature_pubkey
 
             # if the recovered address matches the user address on record, proceed
             # (uses downcase to ignore checksum mismatch)
@@ -94,6 +94,6 @@ class SessionsController < ApplicationController
 
     # deletes user session
     session[:user_id] = nil
-    redirect_to root_path, notice: 'Logged out.'
+    redirect_to root_path, notice: "Logged out."
   end
 end

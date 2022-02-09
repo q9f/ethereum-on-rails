@@ -1,4 +1,4 @@
-require 'eth'
+require "eth"
 
 class UsersController < ApplicationController
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
           if @user.save
 
             # if user is created, congratulations, send them to login
-            redirect_to login_path, notice: 'Successfully created an account, you may now log in.'
+            redirect_to login_path, notice: "Successfully created an account, you may now log in."
           else
 
             # if it fails, eth address is already in database, go to login
@@ -62,6 +62,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     # only allow user to control name, message, signature, and address
     params.require(:user).permit(:username, :eth_address)
