@@ -2,13 +2,18 @@
 
 Ethereum on Rails MVP: allow sign-up and log-in with Ethereum wallet (e.g., MetaMask browser extension).
 
+[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
+[![Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fq9f%2Fethereum-on-rails&count_bg=%2379C83D&title_bg=%23555555&icon=rubygems.svg&icon_color=%23FF0000&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
+[![Top Language](https://img.shields.io/github/languages/top/q9f/ethereum-on-rails?color=red)](https://github.com/q9f/ethereum-on-rails/pulse)
+[![Open-Source License](https://img.shields.io/github/license/q9f/ethereum-on-rails)](LICENSE)
+
 ![Screenshot of the log-in page](./img/screenshot.png)
 
 ### Required versions
 
 * Ruby `^3.0.0`
-* Rails `^6.1.0`
-* Node `^16.8.0`
+* Rails `^7.0.0`
+* Node `^17.4.0`
 
 ### System dependencies
 
