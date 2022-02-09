@@ -41,12 +41,12 @@ class SessionsController < ApplicationController
           if signed_nonce.eql? user_nonce
 
           # recover address from signature
-          signature_pubkey = Eth::Key.personal_recover message, signature
-          signature_address = Eth::Utils.public_key_to_address signature_pubkey
+          signature_pubkey = Eth::Signature.personal_recover message, signature
+          signature_address = Eth::Util.public_key_to_address signature_pubkey
 
             # if the recovered address matches the user address on record, proceed
             # (uses downcase to ignore checksum mismatch)
-            if user_address.downcase.eql? signature_address.downcase
+            if user_address.downcase.eql? signature_address.to_s.downcase
 
               # if this is true, the user is cryptographically authenticated!
               session[:user_id] = user.id
