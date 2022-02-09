@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
         # also make sure the parsed request_time is sane
         # (not nil, not 0, not off by orders of magnitude)
         sane_checkpoint = Time.parse "2021-01-01 00:00:00 UTC"
-        if request_time and request_time > sane_checkpoint and request_time < expiry_time
+        if request_time and request_time > sane_checkpoint and Time.now < expiry_time
 
           # enforce that the signed nonce is the one we have on record
           if signed_nonce.eql? user_nonce
