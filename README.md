@@ -7,6 +7,12 @@ Ethereum on Rails MVP: allow sign-up and log-in with Ethereum wallet (e.g., Meta
 [![Top Language](https://img.shields.io/github/languages/top/q9f/ethereum-on-rails?color=red)](https://github.com/q9f/ethereum-on-rails/pulse)
 [![Open-Source License](https://img.shields.io/github/license/q9f/ethereum-on-rails)](LICENSE)
 
+:heavy_check_mark: If you are here to **learn Ethereum-account authentication**, _welcome!_ Feel free to read the following article that is based on this code:
+* [Finally authenticating Rails users with MetaMask](https://dev.to/q9/finally-authenticating-rails-users-with-metamask-3fj)
+
+:warning: If you are here to **build Sign-in with Ethereum for production**, you should use the SIWE libraries instead:
+* [Sign-In with Ethereum - Ruby Library and Rails Examples Release](https://blog.spruceid.com/sign-in-with-ethereum-ruby-library-release-and-rails-examples/)
+
 ![Screenshot of the log-in page](./img/screenshot.png)
 
 ### Required versions
