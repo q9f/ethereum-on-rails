@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApiController
     params_address = Eth::Address.new params[:id]
     if params_address.valid?
 
-      # finds user by valid eth address (downcase to prevent checksum mismatchs)
+      # finds user by valid eth address (downcase to prevent checksum mismatches)
       user = User.find_by(eth_address: params[:id].downcase)
     end
 
